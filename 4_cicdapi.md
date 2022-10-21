@@ -1,40 +1,12 @@
+Control Arm Virtual Hardware with AVH API.
 ---
-title: "Control Arm Virtual Hardware with API"
-linkTitle: "CI/CD workflow API"
-type: docs
-toc_hide: true
-hide_summary: true
-description: >
-    Control Arm Virtual Hardware with API.
----
-## Overview
+In this section we will learn how to control Arm Virtual Hardware via the [AVH API](https://app.avh.arm.com/api/docs). This can be used stand-alone, or as part of your overall CI/CD workflow.
 
-In this section we will learn how to control Arm Virtual Hardware via the [AVH API](https://app.avh.arm.com/api/docs). This can be used stand-alone, or as part of your overall CI/CD workflow. Applications to interface with the API can be written in JavaScript, Python, or C. This example uses JavaScript.
-
-## Pre-requisites
-
-* Arm Virtual Hardware instances managed by GitHub Actions as per [previous section](/devsummit22/cicd_sh).
-* Active GitHub account to host repository
-
-GitHub now requires a [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) when pushing remote updates.
-
-If you do not know your token, you can create a new one via `Settings` > `Developer Settings` > `Personal access tokens`.
-
-Ensure you have enabled the token to `Update GitHub Action workflows`.
-
-You may wish to create a local scratchpad text file containing the below details (which will be unique to you), so that you can easily copy-and-paste from. These will be used frequently during this workshop.
-```
-YOUR_GITHUB_USERNAME
-YOUR_PERSONAL_ACCESS_TOKEN
-git config --global user.name "YOUR_GITHUB_USERNAME"
-git config --global user.email YOUR_EMAIL_ADDRESS
-```
-
-## Detailed Instructions
+Applications to interface with the API can be written in JavaScript, Python, or C. This example uses JavaScript.
 
 We shall extend the workflow from the previous section to automatically transmit the `chip-tool` commands.
 
-### Set up API Token
+## Generate AVH API Token
 
 In either `Arm Virtual Hardware` browser, navigate to `Profile` > `API`.
 
@@ -50,12 +22,13 @@ Paste the above `API Token` as the secret value.
 
 The secret name must be exactly `API_TOKEN`, as this is used by the workflow later.
 
-### Modify the workflow
+## Modify the workflow
 
-To prevent spurious runs of the workflow, navigate to the `Actions` tab of your repository, select the `Matter_CICD_Demo` workflow, and `disable workflow` from the `...` pulldown (to the right of the `Filter workflow runs` textbox).
-
-Navigate to the `connectedhomeip/.github/workflows` folder and edit the `cicd_demo.yml` workflow (it is easiest to do this directly in the browser via the `pencil` icon).
-
+In one of your console instances, navigate to the `connectedhomeip/.github/workflows` folder and edit the `cicd_demo.yml` workflow.
+```console
+cd /hope/pi/connectedhomeip
+nano .github/workflows/cicd_demo.yml
+```
 Append this `job` to the file:
 ```yml
   chip_tool:
@@ -74,11 +47,15 @@ Append this `job` to the file:
           API_TOKEN: ${{ secrets.API_TOKEN }}
         run: node .github/workflows/chip_tool.js
 ```
-Commit change when done.
+Save and exit.
 
 This job invokes the following `JavaScript` which will transmit the `on/off` commands to the `chip-tool` instance via the `Websocket` interface.
 
-Create file `.github/workflows/chip_tool.js`, containing the below:
+Create a file:
+```console
+nano .github/workflows/chip_tool.js
+```
+containing the below:
 ```js
 const readline = require('readline')
 const { ArmApi, ApiClient } = require('@arm-avh/avh-api');
@@ -155,24 +132,31 @@ main().catch((err) => {
     console.error(err);
 });
 ```
+
 Note that the JavaScript refers to instance name `chip-tool`, and `API_TOKEN` secret. The `job` refers to the script `chip_tool.js`, as well as the `API_TOKEN` secret. If these were named differently, you will need to update the script(s) appropriately.
 
-When all edits are complete and commited, return to the `Actions` tab, and enable the `Matter_CICD_Demo` workflow. The workflow contains:
-```yml
-on:
-  workflow_dispatch:
+When all edits are complete, push the changes back to GitHub:
+```console
+git add .
+git commit -m "added chip-tool automation"
+git push
 ```
-which allows the user to manually start a workflow run. Click on `Run workflow` (from `branch [ master ]`) to start a new workflow run.
+You will again be prompted for your GitHub username and Personal Access Token (password).
 
-### Follow progress in GitHub Actions
+A new run of the Action will be triggered.
 
-Navigate to the `Actions` tab of your GitHub repository, and open the current workflow to follow progress. Observe that there are now three `jobs`, with the jobs to run `lighting-app` and `chip-tool` executing in parallel. You can follow progress in GitHub Actions log, and observe `chip-tool` toggling `lighting-app` automatically. You will also see the commands appear in the `chip-tool` console.
+## Follow progress in GitHub Actions
+
+Navigate to the `Actions` tab of your GitHub repository, and open the new workflow run to follow progress.
+
+Observe that there are now three `jobs`, with the jobs to run `lighting-app` and `chip-tool` executing in parallel. You can follow progress in GitHub Actions log, and observe `chip-tool` toggling `lighting-app` automatically. You will also see the commands appear in the `chip-tool` console.
 
 Congratulations! You have entirely automated the process to build and test our applications.
 
-## Next Steps
+## In summary
 
 We have built up a rudimentary CI/CD environment to start `Matter` development. Through the powerful AVH API and workflow methodology of GitHub Actions and other similar technologies, it is possible to construct an intelligent and always available CI/CD scheme, instantiating (and terminating) Virtual Hardware targets as required for your unit tests in a highly scalable way.
 
-[Proceed to next section -->](/devsummit22/knowledgecheck)\
-[<-- Return to Workshop Home](/devsummit22/#sections)
+Thank you for attending our workshop.
+
+* [<-- Return to Workshop Home](/README.md)
