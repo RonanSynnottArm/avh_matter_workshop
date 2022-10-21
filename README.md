@@ -43,9 +43,8 @@ git config --global user.email YOUR_EMAIL_ADDRESS
 | ---         | ---           |
 | Section 1   | [Setup Arm Virtual Hardware instances](/1_setup.md) |
 | Section 2   | [Build and run Matter examples on Arm Virtual Hardware](/2_build.md) |
-| Section 3   | [Automate CI/CD workflow with a self-hosted runner](/3_cicd_sh.md) |
-| Section 4   | [Control Virtual Hardware with AVH API](/4_cicd_api) |
-| Optional    | [Create instance to support SSH](/devsummit22/ssh) |
+| Section 3   | [Automate CI/CD workflow with a self-hosted runner](/3_cicdsh.md) |
+| Section 4   | [Control Virtual Hardware with AVH API](/4_cicdapi.md) |
 
 ## References and Documentation
 
