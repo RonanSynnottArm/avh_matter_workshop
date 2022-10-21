@@ -2,7 +2,7 @@ Simplify embedded software development and Continuous Integration (CI) at scale
 ---
 ## Welcome
 
-Welcome to Arm DevSummit 2022. This workshop is to show you how to get started developing with [Matter](https://buildwithmatter.com) and [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware).
+Welcome to Arm DevSummit 2022. This workshop is to show you how to get started developing with [Matter](https://buildwithmatter.com) and [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware), and to integrate into a CI/CD workflow.
 
 This session is a hands-on workshop connecting to Arm Virtual Hardware in the cloud.
 
