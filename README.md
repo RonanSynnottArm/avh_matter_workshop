@@ -53,6 +53,7 @@ git config --global user.email YOUR_EMAIL_ADDRESS
 | Website       | [Arm Virtual Hardware](https://avh.arm.com)      |
 | Documentation | [AVH Product Overview](https://arm-software.github.io/AVH/main/overview/html/index.html) |
 | Documentation | [Building Matter](https://github.com/project-chip/connectedhomeip/blob/master/docs/guides/BUILDING.md) |
+| Blog          | [Welcome to the Virtual Raspberry Pi 4 running on AWS Graviton processors](https://dev.to/aws-builders/welcome-to-the-virtual-raspberry-pi-4-running-on-aws-graviton-processors-2o8e) |
 
 ## Thank you for attending
 
