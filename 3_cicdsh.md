@@ -120,6 +120,7 @@ git remote -v
 ```
 Commit and push the changes to your repository.
 ```console
+cd /home/pi/connectedhomeip
 git add .
 git commit -m "delete other workflows, update output message"
 git push
