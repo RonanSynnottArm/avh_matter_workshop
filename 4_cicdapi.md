@@ -26,7 +26,7 @@ The secret name must be exactly `API_TOKEN`, as this is used by the workflow lat
 
 In one of your console instances, navigate to the `connectedhomeip/.github/workflows` folder and edit the `cicd_demo.yml` workflow.
 ```console
-cd /hope/pi/connectedhomeip
+cd ~/connectedhomeip
 nano .github/workflows/cicd_demo.yml
 ```
 Append this `job` to the file:
@@ -137,6 +137,7 @@ Note that the JavaScript refers to instance name `chip-tool`, and `API_TOKEN` se
 
 When all edits are complete, push the changes back to GitHub:
 ```console
+cd ~/connectedhomeip
 git add .
 git commit -m "added chip-tool automation"
 git push
