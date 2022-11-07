@@ -73,7 +73,7 @@ In the `lighting-app` instance, run that application.
 ```
 The application will initialize, and you will see boot log echoed in the console.
 
-After approximately 30 seconds you will see in the log:
+After a few seconds you will see in the log:
 ```
 [TIMESTAMP][INSTANCEID] CHIP:DL: PlatformBlueZInit init success
 ```
