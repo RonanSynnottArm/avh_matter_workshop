@@ -91,7 +91,7 @@ You will see a long stream of messages echoed in console of both instances. Wait
 
 In `chip-tool` log you will see:
 ```
-[TIMESTAMP][INSTANCEID] CHIP:CTL: Successfully finished commissioning step 'SendComplete'
+[TIMESTAMP][INSTANCEID] CHIP:TOO: Device commissioning completed with success
 ```
 In `lighting-app` log you will see:
 ```
