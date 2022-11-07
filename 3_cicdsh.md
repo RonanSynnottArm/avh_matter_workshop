@@ -13,6 +13,7 @@ Navigate to the `.github/workflows` folder, and delete all files
 cd /home/pi/connectedhomeip/.github/workflows
 rm -rf *.yaml
 rm -rf *.yml
+ls
 ```
 Create a new `.yml` textfile, for example with the `nano` editor:
 ```console
