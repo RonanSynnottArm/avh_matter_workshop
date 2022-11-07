@@ -92,7 +92,7 @@ This is in a source file named `on-off-server.cpp`. Open the file with `nano`.
 cd ~/connectedhomeip
 nano src/app/clusters/on-off-server/on-off-server.cpp
 ```
-Locate the `Toggle on/off` message (use `Ctrl+_` to jump to line `137`):
+Locate the `Toggle on/off` message (use `Ctrl+_` to jump to line `114`):
 ```C
     emberAfOnOffClusterPrintln("Toggle on/off from %x to %x", currentValue, newValue);
 ```
