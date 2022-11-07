@@ -24,12 +24,12 @@ The secret name must be exactly `API_TOKEN`, as this is used by the workflow lat
 
 ## Modify the workflow
 
-In one of your console instances, navigate to the `connectedhomeip/.github/workflows` folder and edit the `cicd_demo.yml` workflow.
+In the `lighting-app` instance console, edit the previously created workflow.
 ```console
 cd ~/connectedhomeip
 nano .github/workflows/cicd_demo.yml
 ```
-Append this `job` to the file:
+**Append** this `job` to the file:
 ```yml
   chip_tool:
     needs: rebuild_lighting_app
@@ -51,7 +51,7 @@ Save and exit.
 
 This job invokes the following `JavaScript` which will transmit the `on/off` commands to the `chip-tool` instance via the `Websocket` interface.
 
-Create a file:
+Create a script:
 ```console
 nano .github/workflows/chip_tool.js
 ```
